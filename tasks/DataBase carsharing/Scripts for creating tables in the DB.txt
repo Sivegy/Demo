@@ -19,7 +19,7 @@ CREATE TABLE Cars
 	StarsCount int NOT NULL,
 	YearOfIssue date NOT NULL,
 	Color varchar(10) NOT NULL,
-	Ready bit NOT NULL,
+	Ready bit NULL,
 	PointId int NOT NULL FOREIGN KEY REFERENCES Points(PointId)
 )
 
