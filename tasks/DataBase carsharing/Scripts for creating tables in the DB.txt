@@ -1,8 +1,8 @@
 CREATE TABLE Models
 (
 	ModelId int IDENTITY NOT NULL PRIMARY KEY,
-	BrandName varchar(20) NOT NULL,
-	ModelName varchar(20) NOT NULL
+	BrandName varchar(30) NOT NULL,
+	ModelName varchar(30) NOT NULL
 )
 
 CREATE TABLE Points
@@ -17,23 +17,23 @@ CREATE TABLE Cars
 	CarId int IDENTITY NOT NULL PRIMARY KEY,
 	ModelId int NOT NULL FOREIGN KEY REFERENCES Models(ModelId),
 	StarsCount int NOT NULL,
-	YearOfIssue date NOT NULL,
-	Color varchar(10) NOT NULL,
+	ReleaseDate date NOT NULL,
+	Color varchar(30) NOT NULL,
 	Ready bit NULL,
-	PointId int NOT NULL FOREIGN KEY REFERENCES Points(PointId)
+	PointId int FOREIGN KEY REFERENCES Points(PointId)
 )
 
 CREATE TABLE Clients
 (
 	ClientId int IDENTITY NOT NULL PRIMARY KEY,
-	FirstName varchar(20) NOT NULL,
-	Surname varchar(20) NOT NULL,
-	Patronymic varchar(20),
-	Phone varchar(11) NOT NULL,
-	Email varchar(20) NOT NULL,
+	FirstName varchar(30) NOT NULL,
+	Surname varchar(30) NOT NULL,
+	Patronymic varchar(30),
+	Phone varchar(20) NOT NULL,
+	Email varchar(40) NOT NULL,
 	Birthday date NOT NULL,
-	CardNumber varchar(16) NOT NULL,
-	Rating real NULL
+	CardNumber varchar(20) NOT NULL,
+	Rating real
 )
 
 CREATE TABLE Orders
