@@ -1,0 +1,49 @@
+CREATE TABLE Models
+(
+	ModelId int IDENTITY NOT NULL PRIMARY KEY,
+	BrandName varchar(30) NOT NULL,
+	ModelName varchar(30) NOT NULL
+)
+
+CREATE TABLE Points
+(
+	PointId int IDENTITY NOT NULL PRIMARY KEY,
+	X float NOT NULL,
+	Y float NOT NULL	
+)
+
+CREATE TABLE Cars
+(
+	CarId int IDENTITY NOT NULL PRIMARY KEY,
+	ModelId int NOT NULL FOREIGN KEY REFERENCES Models(ModelId),
+	StarsCount int NOT NULL,
+	ReleaseDate date NOT NULL,
+	Color varchar(30) NOT NULL,
+	Ready bit NULL,
+	PointId int FOREIGN KEY REFERENCES Points(PointId)
+)
+
+CREATE TABLE Clients
+(
+	ClientId int IDENTITY NOT NULL PRIMARY KEY,
+	FirstName varchar(30) NOT NULL,
+	Surname varchar(30) NOT NULL,
+	Patronymic varchar(30),
+	Phone varchar(20) NOT NULL,
+	Email varchar(40) NOT NULL,
+	Birthday date NOT NULL,
+	CardNumber varchar(20) NOT NULL,
+	Rating real
+)
+
+CREATE TABLE Orders
+(
+	OrderId int IDENTITY NOT NULL PRIMARY KEY,
+	CarId int NOT NULL FOREIGN KEY REFERENCES Cars(CarId),
+	ClientId int NOT NULL FOREIGN KEY REFERENCES Clients(ClientId),
+	Price real NOT NULL,
+	StartTripTime datetime NOT NULL,
+	DurationInMinutes int NOT NULL,
+	PaymentTime datetime NOT NULL	
+)
+
