@@ -1,29 +1,29 @@
 1. Вывести ФИО всех клиентов без рейтинга (ФИО)
 
-SELECT * FROM Clients WHERE Rating IS NULL
+SELECT concat (Surname, ' ', FirstName, ' ', Patronymic) AS 'ФИО' FROM Clients WHERE Rating IS NULL
 
 2. Вывести топ 3 названия автомобилей с наивысшим классом (Марка, Модель, Класс)
 
-SELECT TOP 3 Models.BrandName, Models.ModelName, Cars.StarsCount FROM Cars
-JOIN Models ON Cars.ModelID = Models.ModelID
-GROUP BY Models.BrandName, Models.ModelName, Cars.StarsCount
-ORDER BY Cars.StarsCount DESC
+SELECT TOP 3 Models.BrandName, Models.ModelName, max(Cars.StarsCount) as Stars FROM Models
+JOIN Cars ON Cars.ModelID = Models.ModelID
+GROUP BY Models.BrandName, Models.ModelName
+ORDER BY Stars DESC
+
 
 3. Вывести топ 5 ФИО клиентов с самым низким рейтингом (ФИО, рейтинг)
 
 SELECT TOP 5 FirstName, Surname, Patronymic, Rating FROM Clients
-GROUP BY FirstName, Surname, Patronymic, Rating
+WHERE Rating IS NOT NULL
 ORDER BY Rating ASC
 
 4. Вывести названия автомобилей, которые подлежат списанию в течение 3х месяцев (Марка, Модель, Дата выпуска)
 
 SELECT Models.BrandName, Models.ModelName, Cars.ReleaseDate FROM Cars JOIN Models on Cars.ModelID = Models.ModelID
-WHERE Cars.ReleaseDate <= '14.01.2020'
+WHERE
+DATEDIFF(month, Cars.ReleaseDate, GETDATE()) > 34
 
 5. Вывести марку автомобиля, которая присутствует в автопарке больше всех (Марка)
 
-SELECT Models.BrandName, count(Models.BrandName) AS BrandNameCount FROM Models
+SELECT TOP 1 Models.BrandName, count(Models.BrandName) AS BrandNameCount FROM Models
 GROUP BY Models.BrandName
 ORDER BY BrandNameCount DESC
-    OFFSET 0 ROWS  
-    FETCH NEXT 1 ROWS ONLY
