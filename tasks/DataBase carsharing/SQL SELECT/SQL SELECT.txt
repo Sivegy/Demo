@@ -4,7 +4,7 @@ SELECT concat (Surname, ' ', FirstName, ' ', Patronymic) AS 'ФИО' FROM Client
 
 2. Вывести топ 3 названия автомобилей с наивысшим классом (Марка, Модель, Класс)
 
-SELECT TOP 3 Models.BrandName, Models.ModelName, cast(avg(Cars.StarsCount) as DECIMAL(10,2)) as Stars FROM Models
+SELECT TOP 3 Models.BrandName, Models.ModelName, cast(avg(cast(Cars.StarsCount as DECIMAL(12,2))) as DECIMAL(10,2))  as Stars FROM Models
 JOIN Cars ON Cars.ModelID = Models.ModelID
 GROUP BY Models.BrandName, Models.ModelName
 ORDER BY Stars DESC
