@@ -12,7 +12,7 @@ ORDER BY Stars DESC
 
 3. Вывести топ 5 ФИО клиентов с самым низким рейтингом (ФИО, рейтинг)
 
-SELECT TOP 5 FirstName, Surname, Patronymic, Rating FROM Clients
+SELECT TOP 5 concat (Surname, ' ', FirstName, ' ', Patronymic) AS 'ФИО', Rating FROM Clients
 WHERE Rating IS NOT NULL
 ORDER BY Rating ASC
 
@@ -24,6 +24,7 @@ DATEDIFF(month, Cars.ReleaseDate, GETDATE()) > 34
 
 5. Вывести марку автомобиля, которая присутствует в автопарке больше всех (Марка)
 
-SELECT TOP 1 Models.BrandName, count(Models.BrandName) AS BrandNameCount FROM Models
+SELECT TOP 1 Models.BrandName, count(Cars.CarID) AS BrandNameCount FROM Models
+JOIN Cars ON Cars.ModelID = Models.ModelID
 GROUP BY Models.BrandName
 ORDER BY BrandNameCount DESC
