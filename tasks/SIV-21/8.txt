@@ -1,0 +1,6 @@
+BEGIN;
+INSERT INTO Points values
+(11, 55.682571, 37.833685);
+update cars set PointId = 11 where PointId = 10;
+delete from Points where PointId = 10;
+COMMIT;

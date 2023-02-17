@@ -1,0 +1,21 @@
+CREATE TABLE Cars
+(	
+	CarId int PRIMARY key,
+	ModelId int NOT NULL REFERENCES Models ON DELETE cascade,
+	StarsCount int NOT NULL,
+	ReleaseDate date NOT NULL,
+	Color varchar(30) NOT NULL,
+	Ready boolean not NULL,
+	PointId int REFERENCES Points	
+)
+
+CREATE TABLE Orders
+(
+	OrderId int PRIMARY KEY,
+	CarId int REFERENCES Cars,
+	ClientId int NOT NULL REFERENCES Clients ON DELETE cascade,
+	PriceRub numeric NOT NULL,
+	StartTripTime timestamp NOT NULL,
+	DurationInMinutes int NOT NULL,
+	PaymentTime timestamp NOT NULL	
+)

@@ -1,0 +1,1 @@
+UPDATE cars SET ready = '0' WHERE color = 'BLACK'
