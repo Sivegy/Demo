@@ -1,1 +1,1 @@
-UPDATE cars SET ready = '0' WHERE color = 'BLACK'
+update cars set ready = false where color ilike 'black';
