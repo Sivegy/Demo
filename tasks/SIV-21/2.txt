@@ -1,1 +1,1 @@
-delete from Points where x is null or y is null
+delete from Points where x is null or y = null or x = 0 or x = 0 or y = 0
