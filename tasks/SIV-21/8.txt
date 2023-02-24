@@ -1,0 +1,10 @@
+BEGIN;
+INSERT INTO "Points"
+VALUES
+(11, 55.682571, 37.833685);
+UPDATE "Cars"
+SET PointId = 11
+WHERE PointId = 10;
+DELETE FROM "Points"
+WHERE PointId = 10;
+COMMIT;

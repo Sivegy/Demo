@@ -1,0 +1,3 @@
+UPDATE "Cars"
+SET ready = false
+WHERE color ilike 'black';

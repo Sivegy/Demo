@@ -1,0 +1,17 @@
+do $$
+BEGIN
+	INSERT INTO "Clients"
+	VALUES
+	(7, 'Антон', 'Лебовски', 'Чуваков', '+7(984)365-78-12', 'lebchuv@gmail.com', '16.11.1993', '9898 8998 5894 8598', 0);
+	if (select count(*) from "Clients" c where firstname = 'Антон' and Surname = 'Чуваков') > 1
+	then 
+	rollback;
+	raise notice 'roolback';
+	else
+	INSERT INTO "Orders"
+	VALUES
+	(9, 9, 7, 250.50, '20.01.2023 10:15', 60, '20.01.2023 10:45');
+	COMMIT;
+	raise notice 'commit';
+	end if;
+end $$
