@@ -1,0 +1,2 @@
+ALTER TABLE "Clients"
+ADD COLUMN balance numeric;

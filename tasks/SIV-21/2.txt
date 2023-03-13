@@ -1,0 +1,2 @@
+DELETE FROM "Points"
+WHERE x = null OR y = null OR x = 0 OR x = 0 OR y = 0;

@@ -1,0 +1,5 @@
+CREATE VIEW "ModelRating"
+AS
+SELECT concat("Models".BrandName, ' ', "Models".ModelName) as Model, "Cars".StarsCount
+FROM "Models"
+JOIN "Cars" on "Models".ModelId = "Cars".ModelId;

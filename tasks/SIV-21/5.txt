@@ -1,0 +1,2 @@
+UPDATE "Clients"
+SET Email = 'test123@yandex.ru';
